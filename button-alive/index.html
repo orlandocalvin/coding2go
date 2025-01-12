@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Alive | Coding2Go</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            background: #f0f0f0;
+            padding: 1.25rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 0 #c4c4c4, 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+            border: 0.125rem solid #ddd;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        button,
+        span#counter {
+            user-select: none;
+        }
+
+        .btn-alive {
+            font-size: 1.5rem;
+            color: #fff;
+            background: #ff4c4c;
+            border: none;
+            border-radius: 50%;
+            width: 3.25rem;
+            height: 3.125rem;
+            box-shadow: 0 .5rem 0 #c44545;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn-alive:active {
+            box-shadow: 0 .25rem 0 #c44545;
+            transform: translateY(.25rem);
+        }
+
+        .btn-alive.disabled {
+            background: #ff4c4c;
+            box-shadow: 0 .25rem 0 #c44545;
+            transform: translateY(.25rem);
+            cursor: default;
+            pointer-events: none;
+        }
+
+        span#counter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            width: 3ch;
+            text-align: center;
+        }
+
+        .reset-btn {
+            border-radius: .75rem;
+            width: auto;
+            padding: 0 1rem;
+            height: 2.5rem;
+            box-shadow: 0 .5rem 0 #c44545;
+            font-size: 1.25rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="controls">
+            <button id="minus" class="btn-alive">-</button>
+            <span id="counter">0</span>
+            <button id="plus" class="btn-alive">+</button>
+        </div>
+        <button id="reset" class="btn-alive reset-btn">RESET</button>
+    </div>
+
+    <script>
+        let count = 0
+        const minus = document.querySelector('#minus')
+        const plus = document.querySelector('#plus')
+        const reset = document.querySelector('#reset')
+        const counter = document.querySelector('#counter')
+
+        function updateCounter() {
+            counter.innerText = count
+            minus.classList.toggle('disabled', count === 0)
+            reset.classList.toggle('disabled', count === 0)
+        }
+
+        plus.addEventListener('click', () => {
+            count++
+            updateCounter()
+        })
+        minus.addEventListener('click', () => {
+            if (count > 0) {
+                count--
+            }
+            updateCounter()
+        })
+        reset.addEventListener('click', () => {
+            count = 0
+            updateCounter()
+        })
+
+        document.addEventListener('DOMContentLoaded', updateCounter)
+    </script>
+</body>
+
+</html>
