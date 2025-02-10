@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation | Coding2Go</title>
+    <style>
+        :root {
+            --primary-green: rgb(0, 180, 0);
+            --dark-green: rgb(0, 130, 0);
+            --primary-red: rgb(255, 0, 0);
+            --dark-red: rgb(225, 0, 0);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Poppins, sans-serif;
+            background-color: antiquewhite;
+            user-select: none;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+        }
+
+        .element {
+            width: 200px;
+            height: 200px;
+            background-color: #0071FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: white;
+            cursor: pointer;
+
+            /* animation-name: spin;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 100ms;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: forwards; */
+
+            animation: spin 3s ease-in-out 100ms infinite alternate;
+            animation-play-state: paused;
+        }
+
+        .playButton {
+            text-align: center;
+            padding: .5rem 0;
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: 600;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 .35rem 0 var(--dark-green);
+            transition: all 300ms;
+        }
+
+        .playButton.pause {
+            background-color: var(--primary-red);
+            box-shadow: 0 .35rem 0 var(--dark-red);
+        }
+
+        .playButton:active {
+            transform: translateY(.35rem);
+            box-shadow: 0 0 0 var(--dark-green);
+        }
+
+        .playButton.pause:active {
+            box-shadow: 0 0 0 var(--dark-red);
+        }
+
+        .animation-running {
+            animation-play-state: running;
+        }
+
+        @keyframes spin {
+            50% {
+                scale: 1.5;
+                transform: rotate(0);
+                border-radius: 0;
+            }
+
+            100% {
+                transform: rotate(360deg);
+                border-radius: 50%;
+                scale: 1.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="element">Orlando Calvin</div>
+        <div class="playButton">Play</div>
+    </main>
+
+    <script>
+        const element = document.querySelector('.element')
+        const playButton = document.querySelector('.playButton')
+
+        playButton.addEventListener('click', () => {
+            element.classList.toggle('animation-running')
+            const isPlaying = element.classList.contains('animation-running')
+
+            playButton.textContent = isPlaying ? "Pause" : "Play"
+            playButton.classList.toggle("pause", isPlaying)
+        })
+    </script>
+</body>
+
+</html>

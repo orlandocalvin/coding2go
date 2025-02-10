@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paused Animation | Coding2Go</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f1629, #1e3c72);
+        }
+
+        img {
+            width: 12rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .berputar {
+            animation: berputar 10s infinite linear;
+        }
+
+        .pause {
+            animation-play-state: paused;
+        }
+
+        @keyframes berputar {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="play" class="berputar">
+        <img src="img/the_weekend.jpg">
+    </div>
+
+    <script>
+        const play = document.querySelector('#play')
+
+        play.addEventListener('click', () => {
+            play.classList.toggle('pause')
+        })
+    </script>
+</body>
+
+</html>
