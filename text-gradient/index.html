@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Gradient | Coding2Go</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to top right, #141026, #1f1a3b);
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+            margin: 0;
+            user-select: none;
+        }
+
+        .text-gradient {
+            background-image: linear-gradient(to right, #a855f7, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello <span class="text-gradient">World!</span></h1>
+</body>
+
+</html>
