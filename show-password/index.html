@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Password | Coding2Go</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #eee;
+        }
+
+        .app {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        #input_password {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        #show_password {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        #input_password:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        label {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+        <input id="input_password" type="password">
+        <label for="show_password">
+            <input id="show_password" type="checkbox">
+            Tampilkan Password
+        </label>
+    </div>
+
+    <script>
+        const inputPassword = document.querySelector('#input_password')
+        const showPassword = document.querySelector('#show_password')
+
+        showPassword.addEventListener('change', (e) => {
+            inputPassword.setAttribute('type', e.target.checked ? 'text' : 'password')
+        })
+    </script>
+</body>
+
+</html>
