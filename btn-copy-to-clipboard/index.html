@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy To Clipboard | Coding2Go</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #va_number {
+            font-size: 20px;
+            color: #555;
+            background-color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        #copy_btn {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #copy_btn:hover {
+            background-color: #45a049;
+        }
+
+        #copy_message {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Copy Virtual Account Number</h1>
+        <p id="va_number">0836 9324 6235 5321</p>
+        <p id="copy_message" class="hidden">Virtual account has been copied to clipboard!</p>
+        <button id="copy_btn">Copy to Clipboard</button>
+    </div>
+
+    <script>
+        const va_number = document.querySelector('#va_number').innerText
+        const button = document.querySelector('#copy_btn')
+        const message = document.querySelector('#copy_message')
+
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText(va_number)
+            showMessage()
+        })
+
+        function showMessage() {
+            message.classList.remove('hidden')
+            setTimeout(() => {
+                message.classList.add('hidden')
+            }, 1500)
+        }
+    </script>
+</body>
+
+</html>
